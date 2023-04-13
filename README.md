@@ -45,7 +45,7 @@ Tips: About how to read RFC, here is an article about it.  [How to Read RFC](htt
 
 ## Tasks
 
-### Task 1: HTTP Message encapsulation and de-encapsulation (20 pts)
+### Task 1: HTTP Message encapsulation and de-encapsulation
 
 In task1, you need to complete the code in the framework, and directly manipulate of binary data and sockets to handle HTTP messages.
 
@@ -78,7 +78,7 @@ $ curl -v http://127.0.0.1:8080/
 
 At last, we provide the unit-test `TestTask1.py`  for you to check your implementation.
 
-### Task 2: Basic Static Content Server (20 pts)
+### Task 2: Basic Static Content Server
 
 In task 2, you are required to write handler to serve local files when clients GET for any files under `/data/`. 
 
@@ -112,7 +112,7 @@ http_server.register_handler("/data", task2_file_handler, allowed_methods=['GET'
 
 At last, we provide the unit-test `TestTask2.py`  for you to check your implementation.
 
-### Task 3: Handle POST Request (20 pts)
+### Task 3: Handle POST Request
 
 If you are not so familiar with what POST is, please refer to this document. https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST
 
@@ -175,7 +175,7 @@ $ curl -v http://127.0.0.1:8080/post --get
 ```
 At last, we provide the unit-test `TestTask3.py`  for you to check your implementation.
 
-### Task 4: HTTP 302 Found: URL Redirection (10 pts)
+### Task 4: HTTP 302 Found: URL Redirection
 
 If you are not so familiar with what Redirection is, please refer to this document. https://developer.mozilla.org/en-US/docs/Web/HTTP/Redirections.
 
@@ -205,7 +205,7 @@ $ curl -v http://127.0.0.1:8080/redirect
 
 At last, we provide the unit-test `TestTask4.py`  for you to check your implementation.
 
-### Task 5: HTTP Cookie and Session (30 pts)
+### Task 5: HTTP Cookie and Session
 
 > An HTTP cookie (web cookie, browser cookie) is a small piece of data that a server sends to a user's web browser. The browser may store the cookie and send it back to the same server with later requests. Typically, an HTTP cookie is used to tell if two requests come from the same browser—keeping a user logged in, for example. It remembers stateful information for the stateless HTTP protocol.
 
@@ -219,7 +219,7 @@ In the second step, the client will request the protected image with Cookie set 
 
 In this part, you don't need to care CORS problem, and you can just ignore `Domain`, `Path` attributes in Cookie.
 
-#### Cookie (15 pts)
+#### Cookie
 
 After receiving an HTTP request, a server can send one or more Set-Cookie headers with the response. After receiving the cookie, browser usually stores the cookie and sends it with requests made to the same server inside a Cookie HTTP header. 
 
@@ -303,7 +303,7 @@ Warning: <FILE>" to save to a file.
 
 After that, you should pass unit-test `TestTask5Cookie.py`. You can open `http://127.0.0.1:8080/api/test` in browser to play with your server.
 
-#### Session (15 pts)
+#### Session
 
 The authentication method in the above method is not secure, a malicious client can access the protected resources by just setting the cookie `Authenticated=yes` without knowing the real username and password credential.
 
@@ -407,44 +407,8 @@ For other tests, the execution commands are similar.
 
 Go to the root directory of the assignment, then execute tests.
 
-## What to submit
-
-You must provide **a zip file** of your implementation, including `main.py`, `framework.py` and other files if needed.
-
-**A PDF file** that includes some necessary screenshots to show your code works and some brief explanations.
-
-## **Score**
-
-The score of your assignment will be determined by an **extended** set of given unittests. You can use the given unittests to check the correctness of your implementation. But you still might not get 100 points, even if you pass all the given unittests.
-
-**ATTENTION!!!**
-
-Please modify `YOUR_STUDENT_ID = 12010000` to your SID in `main.py`, this field is used in automated testing. Otherwise, SAs will be painful to handle your submission.
-
-### **Score Environment**
-
-Please notice that your code will eventually be tested and scored on a platform based on the following environments.
-
-- Python 3.9
-- **LIB LIMITATION**: You can only use [The Python Standard Library](https://docs.python.org/3/library/index.html), **excluding** the http module.
-
-Dockerfile to build the test environment (You don't need to build this environment locally): 
-
-```dockerfile
-FROM python:3.9-bullseye 
-RUN apt update && apt install -y curl
-RUN pip3 install requests
-VOLUME /score
-WORKDIR /score
-CMD ["/bin/bash", "-c", "python3 -m tests.TestAll >result.txt 2>stderr.txt"]
-# Build : docker build . -t ass1
-# Run   : docker run -v $PWD:/score -it ass1:latest
-```
-
 ## Q&A Link
 
 If you have any question about this assignment, please go to the link above to raise your question. And we will check and reply in time.
 
 https://github.com/yuk1i/cs305-2022fall-homework1-student/issues
-
-Enjoy yourselves!
